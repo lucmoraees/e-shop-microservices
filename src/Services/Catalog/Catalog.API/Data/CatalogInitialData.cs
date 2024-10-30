@@ -6,12 +6,12 @@ namespace Catalog.API.Data
     {
         public async Task Populate(IDocumentStore store, CancellationToken cancellation)
         {
-            using var session = store.LightweightSession(GetPreconfiguredProducts);
+            using var session = store.LightweightSession();
 
             if (await session.Query<Product>().AnyAsync())
                 return;
-
-            session.Store<Product>();
+            
+            session.Store<Product>(GetPreconfiguredProducts());
             await session.SaveChangesAsync();
         }
 
