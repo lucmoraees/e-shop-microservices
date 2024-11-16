@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   catalogdb:
     container_name: catalogdb
@@ -13,6 +11,25 @@ services:
     volumes:
       - postgres_catalog:/var/lib/postgresql/data/
       
+  basketdb:
+    container_name: basketdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=BasketDb
+    restart: always
+    ports:
+        - "5445:5432"
+    volumes:
+      - postgres_basket:/var/lib/postgresql/data/
+
+  distributedcache:
+    container_name: distributedcache
+    restart: always
+    ports:
+        - "6379:6379"
+
+
   catalog.api:
     container_name: catalog.api
     environment:
@@ -27,3 +44,34 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
+
+  basket.api:
+    container_name: basket.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__Database=Host=catalogdb;Port=5432;Database=CatalogDb;Username=postgres;Password=123456
+      - ConnectionStrings__Redis=distributedcache:6379
+      - GrpcSettings__DicountUrl=http://discount.grpc:8080
+    depends_on:
+      - basketdb
+      - distributedcache
+      - discount.grpc   
+    ports:
+      - "6061:8080"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  discount.grpc:
+    container_name: discount.grpc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__Database=Data Source=/app/db/discount.db
+    ports:
+      - "6062:8080"
+    volumes:
+      - ./data/sqlite:/app/db
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
