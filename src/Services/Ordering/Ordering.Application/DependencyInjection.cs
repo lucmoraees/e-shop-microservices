@@ -1,8 +1,6 @@
 ﻿using BuildingBlocks.Behaviors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-// using BuildingBlocks.Messaging.MassTransit;
-// using Microsoft.FeatureManagement;
 using System.Reflection;
 
 namespace Ordering.Application
