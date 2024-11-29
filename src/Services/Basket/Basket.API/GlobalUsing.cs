@@ -11,3 +11,4 @@ global using Basket.API.Exceptions;
 global using Basket.API.Models;
 global using Basket.API.Data;
 global using Discount.Grpc;
+global using Basket.API.Dtos;

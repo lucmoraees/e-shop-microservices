@@ -37,6 +37,17 @@ services:
     restart: always
     ports:
       - "1433:1433"
+      
+  messagebroker:
+    container_name: messagebroker
+    hostname: ecommerce-mq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15692:15692"
 
   catalog.api:
     container_name: catalog.api
@@ -52,7 +63,6 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
-
   basket.api:
     container_name: basket.api
     environment:
@@ -60,11 +70,15 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ConnectionStrings__Database=Host=catalogdb;Port=5432;Database=CatalogDb;Username=postgres;Password=123456
       - ConnectionStrings__Redis=distributedcache:6379
-      - GrpcSettings__DicountUrl=http://discount.grpc:8080
+      - GrpcSettings__DiscountUrl=http://discount.grpc:8080
+      - MessageBroker__Host=amqp://ecommerce-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
     depends_on:
       - basketdb
       - distributedcache
-      - discount.grpc   
+      - discount.grpc
+      - messagebroker  
     ports:
       - "6061:8080"
     volumes:
@@ -81,5 +95,39 @@ services:
       - "6062:8080"
     volumes:
       - ./data/sqlite:/app/db
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  ordering.api:
+    container_name: ordering.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__Database=Server=orderdb;Database=OrderDb;User Id=sa;Password=Senha123456;Encrypt=False;TrustServerCertificate=True
+      - MessageBroker__Host=amqp://ecommerce-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
+      - FeatureManagement__OrderFullfilment=false
+    depends_on:
+      - orderdb
+      - messagebroker
+    ports:
+      - "6063:8080"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  yarpapigateway:
+    container_name: yarpapigateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    depends_on:
+      - catalog.api
+      - basket.api
+      - ordering.api
+    ports:
+      - "6064:8080"
+    volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
