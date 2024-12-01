@@ -167,12 +167,11 @@
 </ul>
   
 <strong>Containerização</strong>:
-<li>Configurado para execução em ambientes Docker, com suporte a:
-  <ul>
-    <li><strong>Dockerfile</strong> para containerização do microsserviço.</li>
-    <li><strong>docker-compose</strong> para orquestração do microsserviço, Redis e PostgreSQL.</li>
-  </ul>
-</li>
+Configurado para execução em ambientes Docker, com suporte a:
+<ul>
+  <li><strong>Dockerfile</strong> para containerização do microsserviço.</li>
+  <li><strong>docker-compose</strong> para orquestração do microsserviço, Redis e PostgreSQL.</li>
+</ul>
 
 <h4>Fluxo de Trabalho</h4>
 <ol>
