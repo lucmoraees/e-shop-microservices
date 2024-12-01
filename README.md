@@ -132,6 +132,58 @@
 </ol>
 
 
+
+<h2>Discount Microservice</h2>
+
+<p>O microserviço de Cesta é responsável por gerenciar as operações relacionadas ao carrinho de compras no sistema de comércio eletrônico. Ele é projetado para ser eficiente, modular e escalável, utilizando tecnologias modernas e padrões arquiteturais comprovados.</p>
+
+<img src="https://github.com/user-attachments/assets/6efc9207-da74-4ab8-b015-2665a83862d7" style="width:100%;margin:10px" />
+
+<h4>Principais Características</h4>
+
+<strong>APIs RESTful com ASP.NET 8 Web API</strong>:
+<ul>
+  <li>Segue os princípios da API REST para implementar operações CRUD no carrinho de compras.</li>
+</ul>
+
+<strong>Uso de Redis como Cache Distribuído</strong>:
+<ul>
+  <li>Utiliza o Redis como cache sobre o banco de dados <code>basketdb</code> para melhorar o desempenho e reduzir a latência.</li>
+</ul>
+
+<strong>Padrões Arquiteturais</strong>:
+<ul>
+  <li>Implementa os padrões <strong>Proxy</strong>, <strong>Decorator</strong> e <strong>Cache-aside</strong> para modularidade e eficiência.</li>
+</ul>
+  
+<strong>Integração com o Serviço de Descontos</strong>:
+<ul>
+  <li>Consome o serviço <strong>Grpc</strong> do microsserviço de Descontos para calcular o preço final dos produtos no carrinho.</li>
+</ul>
+
+<strong>Publicação de Mensagens com RabbitMQ</strong>:
+<ul>
+  <li>Publica eventos de checkout do carrinho (BasketCheckout) em filas utilizando <strong>MassTransit</strong> e <strong>RabbitMQ</strong> para comunicação assíncrona.</li>
+</ul>
+  
+<strong>Containerização</strong>:
+<ul>
+  <li>Configurado para execução em ambientes Docker, com suporte a:
+    <ul>
+      <li><strong>Dockerfile</strong> para containerização do microsserviço.</li>
+      <li><strong>docker-compose</strong> para orquestração do microsserviço, Redis e PostgreSQL.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4>Fluxo de Trabalho</h4>
+<ol>
+  <li><strong>Gerenciamento do Carrinho</strong>: Permite adicionar, atualizar, listar e remover itens do carrinho com operações CRUD eficientes.</li>
+  <li><strong>Integração com o Serviço de Descontos</strong>: Realiza comunicação síncrona via gRPC para aplicar descontos aos produtos.</li>
+  <li><strong>Publicação de Eventos</strong>: Publica eventos de checkout do carrinho para processamento posterior nos microsserviços relevantes.</li>
+</ol>
+
+
 <h3>Shopping.Web</h3>
 <img src="https://github.com/user-attachments/assets/178e5d7b-0209-4c96-9c7c-05028821e0e6" style="width:33%;" />
 <img src="https://github.com/user-attachments/assets/d6d89ba5-3b02-413b-b15b-5135008faf13" style="width:33%;" />
