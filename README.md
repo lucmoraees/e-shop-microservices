@@ -12,7 +12,7 @@
   <li><strong><a href="#basket-microservice">Cesta</a></strong>: Operações de carrinho de compras.</li>
   <li><strong><a href="#discount-microservice">Desconto</a></strong>: Aplicação de cupons e promoções.</li>
   <li><strong><a href="#order-microservice">Pedidos</a></strong>: Processamento e gerenciamento de pedidos.</li>
-  <li><strong><a href="#yarp-api-gateway">YARP API Gateway</a></strong>: Centralização de APIs para comunicação eficiente.</li>
+  <li><strong><a href="#comunicação-assíncrona-de-microsserviços-com-rabbitmq-e-masstransit">YARP API Gateway</a></strong>: Centralização de APIs para comunicação eficiente.</li>
   <li><strong><a href="#shoppingweb">Shopping.Web</a></strong>: Aplicação cliente para o consumidor final.</li>
 </ul>
 
