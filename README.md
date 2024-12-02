@@ -294,7 +294,7 @@ Configurado para execução em ambientes Docker, com suporte a:
 
 
 
-## Microserviço YarpApiGateway
+## YarpApiGateway Microservice
 
 <p>O <strong>YarpApiGateway</strong> é responsável por centralizar as chamadas dos clientes e roteá-las para os microsserviços apropriados, implementando o padrão de roteamento de gateway. Ele utiliza o <strong>YARP (Yet Another Reverse Proxy)</strong> para configurar e gerenciar o proxy reverso, oferecendo recursos avançados como roteamento dinâmico, transformação de requisições e limitação de taxa.</p>
 
