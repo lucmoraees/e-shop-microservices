@@ -13,6 +13,7 @@
   <li><strong><a href="#discount-microservice">Desconto</a></strong>: Aplicação de cupons e promoções.</li>
   <li><strong><a href="#order-microservice">Pedidos</a></strong>: Processamento e gerenciamento de pedidos.</li>
   <li><strong><a href="#comunicação-assíncrona-de-microsserviços-com-rabbitmq-e-masstransit">YARP API Gateway</a></strong>: Centralização de APIs para comunicação eficiente.</li>
+  <li><strong><a href="#yarpapigateway-microservice">YARP API Gateway</a></strong>: Centralização de APIs para comunicação eficiente.</li>
   <li><strong><a href="#shoppingweb">Shopping.Web</a></strong>: Aplicação cliente para o consumidor final.</li>
 </ul>
 
@@ -334,7 +335,7 @@ Configurado para execução em ambientes Docker, com suporte a:
 
 
 
-## Aplicativo de Cliente da Web de Compras
+## Shopping Web APP
 
 <p>O <strong>Aplicativo de Cliente da Web de Compras</strong> é uma interface web que permite aos usuários interagir com o sistema de comércio eletrônico. Ele é desenvolvido com <strong>ASP.NET Core Razor Pages</strong> e utiliza o <strong>Bootstrap 4</strong> para fornecer uma interface moderna, responsiva e amigável ao usuário.</p>
 
