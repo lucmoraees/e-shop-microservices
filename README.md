@@ -12,9 +12,9 @@
   <li><strong><a href="#basket-microservice">Cesta</a></strong>: Operações de carrinho de compras.</li>
   <li><strong><a href="#discount-microservice">Desconto</a></strong>: Aplicação de cupons e promoções.</li>
   <li><strong><a href="#order-microservice">Pedidos</a></strong>: Processamento e gerenciamento de pedidos.</li>
-  <li><strong><a href="#comunicação-assíncrona-de-microsserviços-com-rabbitmq-e-masstransit">YARP API Gateway</a></strong>: Centralização de APIs para comunicação eficiente.</li>
+  <li><strong><a href="#comunicação-assíncrona-de-microsserviços-com-rabbitmq-e-masstransit">Comunicação Assíncrona de Microsserviços</a></strong>: Comunicação entre microsserviços usando RabbitMQ e MassTransit.</li>
   <li><strong><a href="#yarpapigateway-microservice">YARP API Gateway</a></strong>: Centralização de APIs para comunicação eficiente.</li>
-  <li><strong><a href="#shoppingweb">Shopping.Web</a></strong>: Aplicação cliente para o consumidor final.</li>
+  <li><strong><a href="#shopping-web-app">Shopping.Web</a></strong>: Aplicação cliente para o consumidor final.</li>
 </ul>
 
 <p>Os dados dos microsserviços são armazenados em bancos de dados relacionais e NoSQL, com comunicação entre serviços realizada via <strong>gRPC</strong> e <strong>RabbitMQ</strong> em um modelo orientado a eventos. O <strong>YARP API Gateway</strong> facilita operações do cliente, garantindo uma interface fluida e segura.</p>
@@ -183,7 +183,7 @@ Configurado para execução em ambientes Docker, com suporte a:
 
 
 
-## Discount Microservice
+## Order Microservice
 
 <p>O microserviço de Pedidos é responsável pelo gerenciamento de pedidos no sistema de comércio eletrônico. Ele é construído com foco em desempenho, escalabilidade e aderência a práticas arquiteturais modernas.</p>
 
