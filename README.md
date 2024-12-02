@@ -8,10 +8,10 @@
 <p>Os microsserviços desenvolvidos incluem funcionalidades para um sistema de comércio eletrônico, como:</p>
 
 <ul>
-  <li><strong><a href="#catálogo-microservice">Catálogo</a></strong>: Gerenciamento de produtos.</li>
-  <li><strong><a href="#cesta-microservice">Cesta</a></strong>: Operações de carrinho de compras.</li>
-  <li><strong><a href="#desconto-microservice">Desconto</a></strong>: Aplicação de cupons e promoções.</li>
-  <li><strong><a href="#pedidos-microservice">Pedidos</a></strong>: Processamento e gerenciamento de pedidos.</li>
+  <li><strong><a href="#catalog-microservice">Catálogo</a></strong>: Gerenciamento de produtos.</li>
+  <li><strong><a href="#basket-microservice">Cesta</a></strong>: Operações de carrinho de compras.</li>
+  <li><strong><a href="#discount-microservice">Desconto</a></strong>: Aplicação de cupons e promoções.</li>
+  <li><strong><a href="#order-microservice">Pedidos</a></strong>: Processamento e gerenciamento de pedidos.</li>
   <li><strong><a href="#yarp-api-gateway">YARP API Gateway</a></strong>: Centralização de APIs para comunicação eficiente.</li>
   <li><strong><a href="#shoppingweb">Shopping.Web</a></strong>: Aplicação cliente para o consumidor final.</li>
 </ul>
